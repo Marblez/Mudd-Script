@@ -1,14 +1,9 @@
-// CONFIGURE USER INFORMATION HERE:
-var firstname = "Matthew";
-var lastname = "Wang";
-var email = "MatthewWang2020@U.northwestern.edu";
-
 // INFORMATION:
 // Required Javascript libraries: PhantomJS, NodeCron
 
 // Script begins //
-
-
+var totalhours = 3;
+var totalboxes = totalhours *2;
 console.log("Welcome to Mudd Library 'Large Study Room' Automatic Reservation");
 var today = new Date();
 var year = today.getFullYear();
@@ -24,7 +19,7 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
     // Calculate ID with algorithm
     // Automatically clicks all elements required
     console.log("Beginning to select elements");
-    for(var i=0;i<3;i++){
+    for(var i=0;i<totalhours;i++){ // Change totalhours to totalboxes
       console.log(i);
       page.evaluate(function() {
         var today = new Date();
@@ -54,8 +49,11 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
 
     // FILL OUT INFORMATION PAGE
     console.log("Filling out information...");
-    
+
     page.evaluate(function() {
+      var firstname = "Matthew";
+      var lastname = "Wang";
+      var email = "MatthewWang2020@U.northwestern.edu";
       document.getElementById("fname").value=firstname;
       document.getElementById("lname").value=lastname;
       document.getElementById("email").value = email;
