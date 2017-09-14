@@ -17,7 +17,7 @@ var day =today.getDate();
 console.log("Today's date: "+month+"/"+day+"/"+year);
 
 var calculateID = function(year,month,day){
-// Calculates elementID of needed squares to click
+// Algorithm that calculates elementID of needed squares to click
 return 0;
 };
 
@@ -35,9 +35,14 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
       targetdoc.click();
     }
     console.log("Successfully selected elements");
-    //Submits form and fills in information
+    //Submits form
     var cont = document.getElementById("rm_tc_cont");
     cont.click();
+
+    // FILL OUT INFORMATION PAGE
+    document.getElementById("fname").value=firstname;
+    document.getElementById("lname").value=lastname;
+    document.getElementById("email").value = email;
     // Finished Running operations
     phantom.exit();
   }
