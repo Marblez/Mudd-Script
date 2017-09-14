@@ -40,10 +40,16 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
     cont.click();
 
     // FILL OUT INFORMATION PAGE
+    console.log("Filling out information...");
     document.getElementById("fname").value=firstname;
     document.getElementById("lname").value=lastname;
     document.getElementById("email").value = email;
+    document.getElementById('q1').value='Undergraduate student';
+    console.log("Filled out all information, submitting reservation...")
     // Finished Running operations
+    var submit = document.getElementById("s-lc-rm-sub");
+    submit.click();
+    console.log("Completed Reservation. Expect an email soon!");
     phantom.exit();
   }
   else{
