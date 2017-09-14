@@ -18,7 +18,9 @@ console.log("Today's date: "+month+"/"+day+"/"+year);
 
 var calculateID = function(year,month,day){
 // Algorithm that calculates elementID of needed squares to click
-return 0;
+
+var ans = 582002418;
+return ans;
 };
 
 var page = require('webpage').create();
