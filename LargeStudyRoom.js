@@ -20,21 +20,24 @@ var calculateID = function(year,month,day){
 // Algorithm that calculates elementID of needed squares to click
 
 var ans = 582002418;
+console.log("Successfully calculated ID value");
 return ans;
 };
 
 var page = require('webpage').create();
 page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) {
-  console.log("Status: " + status);
   if(status === "success") {
+    console.log("Status: " + status);
     // Successfully loaded the page
     // Calculate ID with algorithm
     var firstid = calculateID(year,month,day);
     // Automatically clicks all elements required
+    console.log("Beginning to select elements");
     for(var i=0;i<6;i++){
       var targetid = firstid+i;
-      var targetdoc = document.getElementByID(targetid);
-      targetdoc.click();
+      console.log(i);
+      document.getElementById(targetid).click();
+      console.log(i);
     }
     console.log("Successfully selected elements");
     //Submits form
@@ -47,7 +50,7 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
     document.getElementById("lname").value=lastname;
     document.getElementById("email").value = email;
     document.getElementById('q1').value='Undergraduate student';
-    console.log("Filled out all information, submitting reservation...")
+    console.log("Filled out all information, submitting reservation...");
     // Finished Running operations
     var submit = document.getElementById("s-lc-rm-sub");
     submit.click();
