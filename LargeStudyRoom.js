@@ -19,8 +19,7 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
     // Calculate ID with algorithm
     // Automatically clicks all elements required
     console.log("Beginning to select elements");
-    for(var i=0;i<totalhours;i++){ // Change totalhours to totalboxes
-      console.log(i);
+    for(var i=0;i<totalboxes;i++){ // Change totalhours to totalboxes
       page.evaluate(function() {
         var today = new Date();
         var year = today.getFullYear();
@@ -38,7 +37,7 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
       var targetid = firstid+i;
       document.getElementById(targetid).click();
 });
-      console.log(i);
+
     }
     console.log("Successfully selected elements");
     //Submits form
