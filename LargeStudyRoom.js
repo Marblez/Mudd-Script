@@ -9,15 +9,16 @@ var email = "MatthewWang2020@U.northwestern.edu";
 // Script begins //
 
 
-console.log("Mudd Library large study room automatic reservation");
+console.log("Welcome to Mudd Library 'Large Study Room' Automatic Reservation");
 var today = new Date();
 var year = today.getFullYear();
-var month = today.getMonth();
+var month = today.getMonth()+1;
 var day =today.getDate();
 console.log("Today's date: "+month+"/"+day+"/"+year);
 
 var calculateID = function(year,month,day){
 // Calculates elementID of needed squares to click
+return 0;
 };
 
 var page = require('webpage').create();
@@ -25,11 +26,18 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
   console.log("Status: " + status);
   if(status === "success") {
     // Successfully loaded the page
+    // Calculate ID with algorithm
     var firstid = calculateID(year,month,day);
+    // Automatically clicks all elements required
     for(var i=0;i<6;i++){
       var targetid = firstid+i;
       var targetdoc = document.getElementByID(targetid);
+      targetdoc.click();
     }
+    console.log("Successfully selected elements");
+    //Submits form and fills in information
+    var cont = document.getElementById("rm_tc_cont");
+    cont.click();
     // Finished Running operations
     phantom.exit();
   }
