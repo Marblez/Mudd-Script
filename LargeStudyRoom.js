@@ -2,6 +2,8 @@
 // Required Javascript libraries: PhantomJS, NodeCron
 
 // Script begins //
+
+
 var totalhours = 3;
 var totalboxes = totalhours * 2;
 console.log("Welcome to Mudd Library 'Large Study Room' Automatic Reservation");
@@ -21,6 +23,7 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
     console.log("Beginning to select elements");
     for (var i = 0; i < totalboxes; i++) { // Change totalhours to totalboxes
       page.evaluate(function() {
+
         var today = new Date();
         var year = today.getFullYear();
         var month = today.getMonth() + 1;
@@ -31,14 +34,16 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
 
 
           // ALGORITHM DONE RUNNING
-          var ans = 582002674;
+          var ans = 582002679;
           console.log("Successfully calculated ID value");
           return ans;
         };
 
         var firstid = calculateID(year, month, day);
         var targetid = firstid + i;
-        document.getElementById(targetid).click();
+        var event = document.createEvent( 'MouseEvents' );
+        event.initMouseEvent( 'click', true, true, window, 1, 0, 0 );
+        document.getElementById(targetid).dispatchEvent(event);
       });
 
     }
@@ -46,7 +51,9 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
     //Submits form
 
     page.evaluate(function() {
-      document.getElementById("rm_tc_cont").click();
+      var event = document.createEvent( 'MouseEvents' );
+      event.initMouseEvent( 'click', true, true, window, 1, 0, 0 );
+      document.getElementById("rm_tc_cont").dispatchEvent(event);
     });
 
     // FILL OUT INFORMATION PAGE
@@ -65,13 +72,13 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
     console.log("Filled out all information, submitting reservation...");
     // Finished Running operations
     page.evaluate(function() {
-      document.getElementById("s-lc-rm-sub").click();
+      var event = document.createEvent( 'MouseEvents' );
+      event.initMouseEvent( 'click', true, true, window, 1, 0, 0 );
+      document.getElementById("s-lc-rm-sub").dispatchEvent(event);
     });
     console.log("Completed Reservation. Expect an email soon!");
     phantom.exit();
-}
-
-  else{
+  } else {
     console.log("Encountered error, status !=== success");
     phantom.exit();
   }
