@@ -77,13 +77,18 @@ page.render('renderfirst.pdf', {format: 'pdf', quality: '100'});
     console.log("Filled out all information, submitting reservation...");
     // Finished Running operations
     page.evaluate(function() {
+      /*
       var event = document.createEvent('MouseEvents');
       event.initMouseEvent('click', true, true, window, 1, 0, 0);
       document.getElementById("s-lc-rm-sub").dispatchEvent(event);
-      document.getElementById("s-lc-rm-sub").submit();
+      */
+      var subbutton = document.getElementById("s-lc-rm-sub");
+      console.log(document.getElementById("s-lc-rm-sub").innerHTML);
+      subbutton.submit();
     });
+    console.log("HELLO");
     console.log("Completed Reservation. Expect an email soon!");
-    page.render('renderlast.pdf', {format: 'pdf', quality: '100'});
+    page.render('renderlast.pdf');
     phantom.exit();
   } else {
     console.log("Encountered error, status !=== success");
