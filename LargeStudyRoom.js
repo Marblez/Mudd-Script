@@ -14,14 +14,17 @@ var day = today.getDate();
 console.log("Today's date: " + month + "/" + day + "/" + year);
 
 var page = require('webpage').create();
+
 page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) {
   if (status === "success") {
+page.render('renderfirst.pdf', {format: 'pdf', quality: '100'});
     console.log("Status: " + status);
+
     // Successfully loaded the page
     // Calculate ID with algorithm
     // Automatically clicks all elements required
     console.log("Beginning to select elements");
-    for (var i = 0; i < totalboxes; i++) { // Change totalhours to totalboxes
+    for (var i = 0; i < 2; i++) { // Change totalhours to totalboxes
       page.evaluate(function() {
 
         var today = new Date();
@@ -41,8 +44,8 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
 
         var firstid = calculateID(year, month, day);
         var targetid = firstid + i;
-        var event = document.createEvent( 'MouseEvents' );
-        event.initMouseEvent( 'click', true, true, window, 1, 0, 0 );
+        var event = document.createEvent('MouseEvents');
+        event.initMouseEvent('click', true, true, window, 1, 0, 0);
         document.getElementById(targetid).dispatchEvent(event);
       });
 
@@ -51,8 +54,8 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
     //Submits form
 
     page.evaluate(function() {
-      var event = document.createEvent( 'MouseEvents' );
-      event.initMouseEvent( 'click', true, true, window, 1, 0, 0 );
+      var event = document.createEvent('MouseEvents');
+      event.initMouseEvent('click', true, true, window, 1, 0, 0);
       document.getElementById("rm_tc_cont").dispatchEvent(event);
     });
 
@@ -68,18 +71,23 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
       document.getElementById("email").value = email;
       document.getElementById('q1').value = 'Undergraduate student';
     });
+    //Renders image of the website (Testing purposes)
+    page.render('renderimage.pdf', {format: 'pdf', quality: '100'});
 
     console.log("Filled out all information, submitting reservation...");
     // Finished Running operations
     page.evaluate(function() {
-      var event = document.createEvent( 'MouseEvents' );
-      event.initMouseEvent( 'click', true, true, window, 1, 0, 0 );
+      var event = document.createEvent('MouseEvents');
+      event.initMouseEvent('click', true, true, window, 1, 0, 0);
       document.getElementById("s-lc-rm-sub").dispatchEvent(event);
+      document.getElementById("s-lc-rm-sub").submit();
     });
     console.log("Completed Reservation. Expect an email soon!");
+    page.render('renderlast.pdf', {format: 'pdf', quality: '100'});
     phantom.exit();
   } else {
     console.log("Encountered error, status !=== success");
     phantom.exit();
   }
+
 });
