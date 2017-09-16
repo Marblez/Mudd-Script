@@ -2,6 +2,7 @@
 // Required Javascript libraries: PhantomJS, NodeCron
 
 // Script begins //
+try{
 var CronJob = require('cron').CronJob;
 var job = new CronJob('00 00 00 * * 1-7', function() {
    // Runs every day (Monday through Sunday) at 12:00:00 AM
@@ -12,6 +13,10 @@ var job = new CronJob('00 00 00 * * 1-7', function() {
   true, /* Start the job right now */
   'America/Chicago' /* Time zone of this job. */
 );
+}
+catch(ex) {
+	console.log("Cron pattern not valid");
+}
 
 var totalhours = 3;
 var totalboxes = totalhours * 2;
