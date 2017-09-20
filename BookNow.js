@@ -48,7 +48,12 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
       var firstid = calculateID(year, month, day);
       var event = document.createEvent('MouseEvents');
       event.initMouseEvent('click', true, true, window, 1, 0, 0);
+      try{
       document.getElementById(firstid).dispatchEvent(event);
+    }
+    catch(ex){
+      console.log("Space already taken");
+    }
     });
 
 
@@ -77,7 +82,12 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
           var firstid = calculateID(year, month, day);
           var event = document.createEvent('MouseEvents');
           event.initMouseEvent('click', true, true, window, 1, 0, 0);
+          try{
           document.getElementById(firstid).dispatchEvent(event);
+        }
+        catch(ex){
+          console.log("Space already taken");
+        }
 
           });
 
@@ -105,7 +115,12 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
           var firstid = calculateID(year, month, day);
           var event = document.createEvent('MouseEvents');
           event.initMouseEvent('click', true, true, window, 1, 0, 0);
+          try{
           document.getElementById(firstid).dispatchEvent(event);
+        }
+        catch(ex){
+          console.log("Space already taken");
+        }
           });
 
           page.evaluate(function() {
@@ -133,7 +148,12 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
           var firstid = calculateID(year, month, day);
           var event = document.createEvent('MouseEvents');
           event.initMouseEvent('click', true, true, window, 1, 0, 0);
+          try{
           document.getElementById(firstid).dispatchEvent(event);
+        }
+        catch(ex){
+          console.log("Space already taken");
+        }
           });
 
           page.evaluate(function() {
@@ -160,7 +180,12 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
           var firstid = calculateID(year, month, day);
           var event = document.createEvent('MouseEvents');
           event.initMouseEvent('click', true, true, window, 1, 0, 0);
+          try{
           document.getElementById(firstid).dispatchEvent(event);
+        }
+        catch(ex){
+          console.log("Space already taken");
+        }
           });
 
           page.evaluate(function() {
@@ -187,9 +212,14 @@ page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) 
           var firstid = calculateID(year, month, day);
           var event = document.createEvent('MouseEvents');
           event.initMouseEvent('click', true, true, window, 1, 0, 0);
+          try{
           document.getElementById(firstid).dispatchEvent(event);
+        }
+        catch(ex){
+          console.log("Space already taken");
+        }
           });
-          
+
 
 
     console.log("Successfully selected elements");
