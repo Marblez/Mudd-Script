@@ -1,5 +1,3 @@
-
-
 // STANDARD FUNCTION RUN //
 var totalhours = 3;
 var totalboxes = totalhours * 2;
@@ -14,7 +12,10 @@ var page = require('webpage').create();
 
 page.open('http://northwestern.libcal.com/booking/mudd_large', function(status) {
   if (status === "success") {
-page.render('renderfirst.pdf', {format: 'pdf', quality: '100'});
+    page.render('renderfirst.pdf', {
+      format: 'pdf',
+      quality: '100'
+    });
     console.log("Status: " + status);
 
     // Successfully loaded the page
@@ -22,150 +23,173 @@ page.render('renderfirst.pdf', {format: 'pdf', quality: '100'});
     // Automatically clicks all elements required
     console.log("Beginning to select elements");
 
-      page.evaluate(function() {
+    page.evaluate(function() {
 
-        var today = new Date();
-        var year = today.getFullYear();
-        var month = today.getMonth() + 1;
-        var day = today.getDate();
-        var calculateID = function(year, month, day) {
-          // Algorithm that calculates elementID of needed squares to click
-          // ALGORITHM GOES HERE
+      var today = new Date();
+      var year = today.getFullYear();
+      var month = today.getMonth() + 1;
+      var day = today.getDate();
 
+      var calculateID = function(year, month, day) {
+        // Algorithm that calculates elementID of needed squares to click
+        // ALGORITHM GOES HERE
+        var date1 = new Date("9/20/2017");
+        var date2 = new Date(month + "/" + day + "/" + year);
+        var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        console.log(diffDays);
+        var dscrp = 581974123 + (diffDays * 480);
+        // ALGORITHM DONE RUNNING
 
-          // ALGORITHM DONE RUNNING
-          var ans = 582002437;
-          console.log("Successfully calculated ID value");
-          return ans;
-        };
+        console.log("Successfully calculated ID value");
+        return dscrp;
+      };
 
-        var firstid = calculateID(year, month, day);
-        var targetid = firstid + i;
-        var event = document.createEvent('MouseEvents');
-        event.initMouseEvent('click', true, true, window, 1, 0, 0);
-        document.getElementById(targetid).dispatchEvent(event);
-      });
-
-/*
-      page.evaluate(function() {
-
-        var today = new Date();
-        var year = today.getFullYear();
-        var month = today.getMonth() + 1;
-        var day = today.getDate();
-        var calculateID = function(year, month, day) {
-          // Algorithm that calculates elementID of needed squares to click
-          // ALGORITHM GOES HERE
+      var firstid = calculateID(year, month, day);
+      var event = document.createEvent('MouseEvents');
+      event.initMouseEvent('click', true, true, window, 1, 0, 0);
+      document.getElementById(firstid).dispatchEvent(event);
+    });
 
 
-          // ALGORITHM DONE RUNNING
-          var ans = 582002438;
-          console.log("Successfully calculated ID value");
-          return ans;
-        };
+          page.evaluate(function() {
 
-        var firstid = calculateID(year, month, day);
-        var targetid = firstid + i;
-        var event = document.createEvent('MouseEvents');
-        event.initMouseEvent('click', true, true, window, 1, 0, 0);
-        document.getElementById(targetid).dispatchEvent(event);
-      });
-      page.evaluate(function() {
+          var today = new Date();
+          var year = today.getFullYear();
+          var month = today.getMonth() + 1;
+          var day = today.getDate();
 
-        var today = new Date();
-        var year = today.getFullYear();
-        var month = today.getMonth() + 1;
-        var day = today.getDate();
-        var calculateID = function(year, month, day) {
-          // Algorithm that calculates elementID of needed squares to click
-          // ALGORITHM GOES HERE
+          var calculateID = function(year, month, day) {
+            // Algorithm that calculates elementID of needed squares to click
+            // ALGORITHM GOES HERE
+            var date1 = new Date("9/20/2017");
+            var date2 = new Date(month+"/"+day+"/"+year);
+            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            console.log(diffDays);
+            var dscrp = 581974124+(diffDays*480);
+            // ALGORITHM DONE RUNNING
 
+            console.log("Successfully calculated ID value");
+            return dscrp;
+          };
 
-          // ALGORITHM DONE RUNNING
-          var ans = 582002439;
-          console.log("Successfully calculated ID value");
-          return ans;
-        };
+          var firstid = calculateID(year, month, day);
+          var event = document.createEvent('MouseEvents');
+          event.initMouseEvent('click', true, true, window, 1, 0, 0);
+          document.getElementById(firstid).dispatchEvent(event);
 
-        var firstid = calculateID(year, month, day);
-        var targetid = firstid + i;
-        var event = document.createEvent('MouseEvents');
-        event.initMouseEvent('click', true, true, window, 1, 0, 0);
-        document.getElementById(targetid).dispatchEvent(event);
-      });
+          });
 
-      page.evaluate(function() {
+          page.evaluate(function() {
+          var today = new Date();
+          var year = today.getFullYear();
+          var month = today.getMonth() + 1;
+          var day = today.getDate();
 
-        var today = new Date();
-        var year = today.getFullYear();
-        var month = today.getMonth() + 1;
-        var day = today.getDate();
-        var calculateID = function(year, month, day) {
-          // Algorithm that calculates elementID of needed squares to click
-          // ALGORITHM GOES HERE
+          var calculateID = function(year, month, day) {
+            // Algorithm that calculates elementID of needed squares to click
+            // ALGORITHM GOES HERE
+            var date1 = new Date("9/20/2017");
+            var date2 = new Date(month+"/"+day+"/"+year);
+            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            console.log(diffDays);
+            var dscrp = 581974125+(diffDays*480);
+            // ALGORITHM DONE RUNNING
 
+            console.log("Successfully calculated ID value");
+            return dscrp;
+          };
 
-          // ALGORITHM DONE RUNNING
-          var ans = 582002440;
-          console.log("Successfully calculated ID value");
-          return ans;
-        };
+          var firstid = calculateID(year, month, day);
+          var event = document.createEvent('MouseEvents');
+          event.initMouseEvent('click', true, true, window, 1, 0, 0);
+          document.getElementById(firstid).dispatchEvent(event);
+          });
 
-        var firstid = calculateID(year, month, day);
-        var targetid = firstid + i;
-        var event = document.createEvent('MouseEvents');
-        event.initMouseEvent('click', true, true, window, 1, 0, 0);
-        document.getElementById(targetid).dispatchEvent(event);
-      });
+          page.evaluate(function() {
 
-      page.evaluate(function() {
+          var today = new Date();
+          var year = today.getFullYear();
+          var month = today.getMonth() + 1;
+          var day = today.getDate();
 
-        var today = new Date();
-        var year = today.getFullYear();
-        var month = today.getMonth() + 1;
-        var day = today.getDate();
-        var calculateID = function(year, month, day) {
-          // Algorithm that calculates elementID of needed squares to click
-          // ALGORITHM GOES HERE
+          var calculateID = function(year, month, day) {
+            // Algorithm that calculates elementID of needed squares to click
+            // ALGORITHM GOES HERE
+            var date1 = new Date("9/20/2017");
+            var date2 = new Date(month+"/"+day+"/"+year);
+            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            console.log(diffDays);
+            var dscrp = 581974126+(diffDays*480);
+            // ALGORITHM DONE RUNNING
 
+            console.log("Successfully calculated ID value");
+            return dscrp;
+          };
 
-          // ALGORITHM DONE RUNNING
-          var ans = 582002441;
-          console.log("Successfully calculated ID value");
-          return ans;
-        };
+          var firstid = calculateID(year, month, day);
+          var event = document.createEvent('MouseEvents');
+          event.initMouseEvent('click', true, true, window, 1, 0, 0);
+          document.getElementById(firstid).dispatchEvent(event);
+          });
 
-        var firstid = calculateID(year, month, day);
-        var targetid = firstid + i;
-        var event = document.createEvent('MouseEvents');
-        event.initMouseEvent('click', true, true, window, 1, 0, 0);
-        document.getElementById(targetid).dispatchEvent(event);
-      });
+          page.evaluate(function() {
+          var today = new Date();
+          var year = today.getFullYear();
+          var month = today.getMonth() + 1;
+          var day = today.getDate();
 
-      page.evaluate(function() {
+          var calculateID = function(year, month, day) {
+            // Algorithm that calculates elementID of needed squares to click
+            // ALGORITHM GOES HERE
+            var date1 = new Date("9/20/2017");
+            var date2 = new Date(month+"/"+day+"/"+year);
+            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            console.log(diffDays);
+            var dscrp = 581974127+(diffDays*480);
+            // ALGORITHM DONE RUNNING
 
-        var today = new Date();
-        var year = today.getFullYear();
-        var month = today.getMonth() + 1;
-        var day = today.getDate();
-        var calculateID = function(year, month, day) {
-          // Algorithm that calculates elementID of needed squares to click
-          // ALGORITHM GOES HERE
+            console.log("Successfully calculated ID value");
+            return dscrp;
+          };
 
+          var firstid = calculateID(year, month, day);
+          var event = document.createEvent('MouseEvents');
+          event.initMouseEvent('click', true, true, window, 1, 0, 0);
+          document.getElementById(firstid).dispatchEvent(event);
+          });
 
-          // ALGORITHM DONE RUNNING
-          var ans = 582002442;
-          console.log("Successfully calculated ID value");
-          return ans;
-        };
+          page.evaluate(function() {
+          var today = new Date();
+          var year = today.getFullYear();
+          var month = today.getMonth() + 1;
+          var day = today.getDate();
 
-        var firstid = calculateID(year, month, day);
-        var targetid = firstid + i;
-        var event = document.createEvent('MouseEvents');
-        event.initMouseEvent('click', true, true, window, 1, 0, 0);
-        document.getElementById(targetid).dispatchEvent(event);
-      });
-      */
+          var calculateID = function(year, month, day) {
+            // Algorithm that calculates elementID of needed squares to click
+            // ALGORITHM GOES HERE
+            var date1 = new Date("9/20/2017");
+            var date2 = new Date(month+"/"+day+"/"+year);
+            var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+            var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            console.log(diffDays);
+            var dscrp = 581974128+(diffDays*480);
+            // ALGORITHM DONE RUNNING
+
+            console.log("Successfully calculated ID value");
+            return dscrp;
+          };
+
+          var firstid = calculateID(year, month, day);
+          var event = document.createEvent('MouseEvents');
+          event.initMouseEvent('click', true, true, window, 1, 0, 0);
+          document.getElementById(firstid).dispatchEvent(event);
+          });
+          
 
 
     console.log("Successfully selected elements");
@@ -190,20 +214,23 @@ page.render('renderfirst.pdf', {format: 'pdf', quality: '100'});
       document.getElementById('q1').value = 'Undergraduate student';
     });
     //Renders image of the website (Testing purposes)
-    page.render('renderimage.pdf', {format: 'pdf', quality: '100'});
+    page.render('renderimage.pdf', {
+      format: 'pdf',
+      quality: '100'
+    });
 
     console.log("Filled out all information, submitting reservation...");
     // Finished Running operations
-  /*  page.evaluate(function() {
+    /*  page.evaluate(function() {
 
-      var event = document.createEvent('MouseEvents');
-      event.initMouseEvent('click', true, true, window, 1, 0, 0);
-      document.getElementById("s-lc-rm-sub").dispatchEvent(event);
+        var event = document.createEvent('MouseEvents');
+        event.initMouseEvent('click', true, true, window, 1, 0, 0);
+        document.getElementById("s-lc-rm-sub").dispatchEvent(event);
 
-      var subbutton = document.getElementById("s-lc-rm-sub");
-      console.log(document.getElementById("s-lc-rm-sub").innerHTML);
-      subbutton.submit();
-    }); */
+        var subbutton = document.getElementById("s-lc-rm-sub");
+        console.log(document.getElementById("s-lc-rm-sub").innerHTML);
+        subbutton.submit();
+      }); */
 
     page.evaluate(function() {
       var event = document.createEvent('MouseEvents');
